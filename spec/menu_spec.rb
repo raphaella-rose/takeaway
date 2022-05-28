@@ -7,7 +7,7 @@ RSpec.describe Menu do
     dish_2 = double(:fake_dish, name: "dish name2", price: "price2", quantity: 5)
     menu.add(dish_1)
     menu.add(dish_2)
-    expect(menu.all).to eq [["dish name1", "price1", 5],["dish name2", "price2", 5]]
+    expect(menu.all).to eq [{name: "dish name1", price: "price1", quantity: 5},{name: "dish name2", price: "price2", quantity: 5}]
   end
 
 

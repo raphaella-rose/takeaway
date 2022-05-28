@@ -6,7 +6,7 @@ class Menu
   end
 
   def add(dish)
-    @dishes << [dish.name, dish.price, dish.quantity]
+    @dishes << {name: dish.name, price: dish.price, quantity: dish.quantity}
   end
   
   def all()
