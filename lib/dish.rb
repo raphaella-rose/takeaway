@@ -1,8 +1,9 @@
 class Dish
   
-  def initialize(name,price)
+  def initialize(name,price,quantity)
     @name = name
     @price = price
+    @quantity = quantity
   end
 
   def name()
@@ -11,6 +12,10 @@ class Dish
 
   def price()
     return @price
+  end
+
+  def quantity()
+    return @quantity
   end
 
 end
