@@ -18,6 +18,19 @@ class Order
     end
   end
 
+  def remove(dish)
+    @menu.all.each do |item|
+      item.select do |k,v|
+        if !(v.is_a?(Integer))
+          if v.match?(dish[:name])
+            @order.delete(dish)
+            dish[:quantity] += 1
+          end
+        end
+      end
+    end
+  end
+
   def show_order()
     return @order
   end

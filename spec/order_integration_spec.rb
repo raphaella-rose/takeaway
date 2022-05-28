@@ -33,9 +33,31 @@ RSpec.describe "integration" do
     order.add({name: "dish name1", price: "price1", quantity: 5})
     expect(order.show_order).to eq [{name: "dish name1", price: "price1", quantity: 4}]
   end
-
-
-
+  
+  it "adds dishes to order" do
+    menu = Menu.new()
+    dish_1 = Dish.new("dish name1","price1",5)
+    dish_2 = Dish.new("dish name2","price2",5)
+    menu.add(dish_1)
+    menu.add(dish_2)
+    order = Order.new(menu)
+    order.add({name: "dish name1", price: "price1", quantity: 5})
+    order.add({name: "dish name2", price: "price2", quantity: 5})
+    expect(order.show_order).to eq [{name: "dish name1", price: "price1", quantity: 4}, {name: "dish name2", price: "price2", quantity: 4}]
+  end
+  
+  it "adds dishes to order then removes one" do
+    menu = Menu.new()
+    dish_1 = Dish.new("dish name1","price1",5)
+    dish_2 = Dish.new("dish name2","price2",5)
+    menu.add(dish_1)
+    menu.add(dish_2)
+    order = Order.new(menu)
+    order.add({name: "dish name1", price: "price1", quantity: 5})
+    order.add({name: "dish name2", price: "price2", quantity: 5})
+    order.remove({name: "dish name2", price: "price2", quantity: 4})
+    expect(order.show_order).to eq [{name: "dish name1", price: "price1", quantity: 4}]
+  end
 
 
 
